@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import tripsiLogo from '../img/tripsi.webp';
 import Input from "../Components/Input";
+import Button from '../Components/button';
+
+
+
 function Login() {
+    const [email, setEmail] = useState('')
+    const [password, setpassword] = useState('')
+    
+    const [login, setlogin]  = useState(false)
+
     return (<>
         <div className="bg-third-light min-vh-100">
             <main className="bg-third-light min-vh-100 position-relative">
@@ -33,36 +42,22 @@ function Login() {
 
                                         <div className="px-2 py-3 ">
                                             <form>
-
-
-                                                {/* function form() {
-                                                const [email, setEmail] = useState('')
-                                                const [password, setPassword]= useState('')
-                                                const [errors, setErrors] = useState([])
-
-
-                                                const handleSubmit = (event) => {
-                                                    event.preventDefault();
-                                                const errors = validate();
-                                                }
-
-
-
-
-                                                } */}
                                                 <fieldset>
-                                                    <Input type='email' label='ایمیل' icon={<i className="bi bi-person-fill"></i>} />
+                                                    <Input type='email' label='ایمیل' value={email} onChange={(event) => setEmail(event.target.value)} icon={<i className="bi bi-person-fill"></i>} />
+                                                    {/* {console.log('your email is ' , email)} */}
                                                 </fieldset>
 
                                                 <fieldset>
-                                                    <Input type='password' label='رمز عبور' icon={<i className="bi bi-key"></i>} />
+                                                    
+                                                    <Input type='password' id='pass' label='رمز عبور' value={password} onChange={(event) => setpassword(event.target.value)} icon={<i className="bi bi-key"></i>} />
+                                                    {/* {console.log('password is ', email)} */}
                                                 </fieldset>
 
-                                                <fieldset className="pt-4">
-                                                    <button class="btn-secondary button font-msmall w-100 rounded-4 d-flex 
-                                                     flex-row align-items-center justify-content-center"
-                                                    >ورود</button>
-                                                </fieldset>
+                                                <Button type='button' id='btn' backgroundColor='btn-secondary' label='ورود' onClick={() => setlogin(true) } />
+
+                                                {console.log('click me', login)}
+
+
                                             </form>
                                             <div className="d-flex font-small justify-content-between align-items-center pb-3 pt-4 font-weight-bold flex-column flex-md-row">
                                                 <div className="text-dark text-start font-weight-bold pb-1 pb-md-0">
@@ -83,7 +78,7 @@ function Login() {
 
                                             <div class="d-flex font-small justify-content-between align-items-center pb-4 font-weight-bold flex-column flex-md-row">
                                                 <div className="text-dark pb-1 pb-md-0 text-decoration-none"><span>قبلا ثبت نام نکرده اید؟</span></div>
-                                                <div className="cursor-pointer px-1 do"><a href="#" className="text-secondary text-decoration-none">ثبت نام رایگان</a></div>
+                                                <div className="cursor-pointer px-1 do"><a href="/signup" className="text-secondary text-decoration-none">ثبت نام رایگان</a></div>
                                             </div>
                                         </div>
 
