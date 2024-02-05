@@ -2,9 +2,19 @@
 import React, { useState } from "react";
 import Input from "../Components/Input";
 import tripsiLog from '../img/tripsi.webp'
+import { Link } from 'react-router-dom'
+
+import Button from "../Components/button";
 
 function Signup() {
     const [firstName, setFirstName] = useState('')
+    const [lastName, setlastName] = useState('')
+    const [phone, setphone] = useState('')
+
+    const [Email, setEmail] = useState('')
+    const [password, setpassword] = useState('')
+
+    const [login, setlogin] = useState('false')
 
     return (
         <>
@@ -37,38 +47,38 @@ function Signup() {
                                         <div className="px-2 py-3 ">
                                             <form>
                                                 <fieldset>
-                                                    <Input label='نام' icon={<i className="bi bi-person-fill"></i>} />
+                                                    <Input type="text" label='نام' value={firstName} onChange={(event) => setFirstName(event.target.value)} icon={<i className="bi bi-person-fill"></i>} />
+                                                    {/* {console.log('your name  is ', firstName)} */}
                                                 </fieldset>
                                                 <fieldset>
-                                                    <Input label='نام خانوادگی' icon={<i className="bi bi-person-fill"></i>} />
+                                                    <Input type="text" label='نام خانوادگی' value={lastName} onChange={(event) => setlastName(event.target.value)} icon={<i className="bi bi-person-fill"></i>} />
+                                                    {/* {console.log('your lname  is ', lastName)} */}
                                                 </fieldset>
                                                 <fieldset>
-                                                    <Input label='شماره موبایل ' />
+                                                    <Input type="number" label='شماره موبایل ' value={phone} onChange={(event) => setphone(event.target.value)} />
+                                                    {/* {console.log('your phone is ', phone)} */}
                                                 </fieldset>
                                                 <fieldset>
-                                                    <Input label='ایمیل' icon={<i className="bi bi-person-fill"></i>} />
+                                                    <Input type="email" label='ایمیل' value={Email} onChange={(event) => setEmail(event.target.value)} icon={<i className="bi bi-person-fill"></i>} />
+                                                    {/* {console.log('Your email is', Email)} */}
                                                 </fieldset>
                                                 <fieldset>
-                                                    <Input label='رمز عبور' icon={<i className="bi bi-key"></i>} />
+                                                    <Input type="password" label='رمز عبور' value={password} onChange={(event) => setpassword(event.target.value)} icon={<i className="bi bi-key"></i>} />
+                                                    {/* {console.log('Your password is', password)} */}
                                                 </fieldset>
 
-
-                                                <fieldset className="pt-4">
-                                                    <button tabindex class="btn-secondary loading-button button font-msmall w-100 rounded-4 d-flex 
-                                                     flex-row align-items-center justify-content-center">ثبت نام</button>
-                                                </fieldset>
-
-
-
+                                                <Button type='button' id='signup-btn' backgroundColor='btn-secondary' label='ورود' onClick={() => setlogin(true)} />
+                                                {console.log('be positive please Do not give up', login)}
+                                                
                                                 <fieldset class="d-flex flex-column font-small font-weight-bold pt-3">
                                                     <div class="d-flex justify-content-center justify-content-md-start align-items-center">
-                                                        <div class=" exp input-checkBox-light-mode">
+                                                        <div className=" exp input-checkBox-light-mode">
                                                             <input className="checkBoxLabel cursor-pointer d-none" type="checkbox" id="agree" name="agree" />
 
                                                             <label className="checkBoxLabel cursor-pointer d-flex align-items-center  text-info m-0 " for="agree" tabindex="0">
                                                                 <div tabindex="0" id="spanagree" class="mx-1 d-inline-block checkBoxSpan text-muted"></div>
 
-                                                                <div class="form-check">
+                                                                <div className="form-check">
                                                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                                                                     <label class="form-check-label" for="flexCheckDefault"></label>
                                                                 </div>
@@ -77,11 +87,9 @@ function Signup() {
                                                         </div><a class="m-0 mx-1 text-primary text-decoration-none" href="#"><span>قوانین تریپسی را می پذیرم</span></a></div>
                                                     <div className=" text-danger validation-container w-100 d-flex justify-content-start px-3 pt-1 overflow-auto font-small"></div>
                                                 </fieldset>
-
-
                                                 <fieldset class="d-flex flex-column flex-md-row justify-content-between align-items-center font-small font-weight-bold pt-1 px-1">
                                                     <div class="text-dark pb-0 pb-sm-1"><span>قبلا عضو تریپسی بوده ام</span>
-                                                    </div><div class="text-secondary cursor-pointer px-1"><span>ورود</span>
+                                                    </div><div class="text-secondary cursor-pointer px-1 "><Link to="/Login" className='text-decoration-none'><span>ورود</span></Link>
                                                     </div>
                                                 </fieldset>
                                             </form>
