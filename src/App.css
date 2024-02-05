@@ -1,38 +1,99 @@
-.App {
-  text-align: center;
+.body {
+    display: block;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bg-third-light {
+    direction: rtl;
+    font-family: vazir;
+    position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.glass {
+    background-color: hsl(233.24deg 29.96% 53.53%);
+    background: rgba(255, 255, 255, 0.21);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(0.5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.innerBox {
+    background-color: hsl(230deg 50% 25.88%);
+    border-bottom: 5px;
+    border-bottom-left-radius: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.form-label {
+    margin-right: 10px;
+    font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text-primary-dark {
+    font-weight: bold;
+}
+
+.btn-secondary {
+    height: 52.8px;
+    max-height: 52.8px;
+    border: none;
+    font-weight: bold;
+    background-color: #00798c !important;
+    opacity: 0.5 !important;
+    cursor: pointer !important;
+}
+
+.validation-container {
+    min-height: 24px;
+}
+
+.custome-input-border {
+    border: none;
+    outline: 0px;
+    height: auto;
+    box-shadow: initial !important;
+}
+
+.lightsuccess {
+    width: 100% !important;
+    border-radius: 1rem;
+    border: 1px solid rgb(189, 198, 243);
+}
+
+.backbox.rtl .bend {
+    border-top-right-radius: 4rem;
+    border-top-left-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+}
+
+.bg-primary-light {
+    width: 100% !important;
+    background-color: hsl(230deg 50% 25.88%);
+}
+
+.bg-third-light {
+    background-color: #f5f7fb !important;
+}
+
+.logo {
+    display: flex;
+    width: 352px;
+    height: 176px;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-size: contain;
+    margin-bottom: 1rem;
+}
+
+.h6 {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    font-weight: bold;
+}
+
+img {
+    display: flex;
+    max-width: 100%;
 }
