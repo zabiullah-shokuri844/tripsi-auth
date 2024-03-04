@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import tripsiLogo from '../img/tripsi.webp';
 import Input from "../Components/Input";
@@ -6,11 +6,27 @@ import Button from '../Components/button';
 
 
 
+
 function Login() {
     const [email, setEmail] = useState('')
     const [password, setpassword] = useState('')
-    
-    const [login, setlogin]  = useState(false)
+    const [error, setError] = useState('');
+
+    function handleLogin(e) {
+        e.preventDefault()
+
+        let usersData = JSON.parse(localStorage.getItem("users"))
+
+        let check = usersData.filter((item, index) => {
+            return item.email === email && item.password === password
+        })
+        if (check.length > 0) {
+            setError('success login')
+        }
+        else {
+            setError('Invalid email or password')
+        }
+    }
 
     return (<>
         <div className="bg-third-light min-vh-100">
@@ -26,7 +42,7 @@ function Login() {
                                     </div>
 
                                     <div className="d-flex  flex-column align-items-center justify-centent-center text-center  text-white">
-                                        <h2 class="pb-2"></h2>
+                                        <h2 className="pb-2"></h2>
                                         <h6>معتبرترین عرضه‌کننده خدمات گردشگری در ایران </h6>
                                     </div>
                                 </div>
@@ -41,23 +57,18 @@ function Login() {
                                         </h3>
 
                                         <div className="px-2 py-3 ">
-                                            <form>
+                                            <form >
                                                 <fieldset>
                                                     <Input type='email' label='ایمیل' value={email} onChange={(event) => setEmail(event.target.value)} icon={<i className="bi bi-person-fill"></i>} />
-                                                    {/* {console.log('your email is ' , email)} */}
                                                 </fieldset>
 
                                                 <fieldset>
-                                                    
                                                     <Input type='password' id='pass' label='رمز عبور' value={password} onChange={(event) => setpassword(event.target.value)} icon={<i className="bi bi-key"></i>} />
-                                                    {/* {console.log('password is ', email)} */}
                                                 </fieldset>
 
-                                                <Button type='button' id='btn' backgroundColor='btn-secondary' label='ورود' onClick={() => setlogin(true) } />
-
-                                                {console.log('click me', login)}
-
-
+                                                <Button type='submit' id='btn' backgroundColor='btn-secondary' label='ورود' onClick={(e) => {
+                                                    handleLogin(e)
+                                                }} />
                                             </form>
                                             <div className="d-flex font-small justify-content-between align-items-center pb-3 pt-4 font-weight-bold flex-column flex-md-row">
                                                 <div className="text-dark text-start font-weight-bold pb-1 pb-md-0">
@@ -67,7 +78,7 @@ function Login() {
                                                     <span >رمز یکبار مصرف</span>
                                                 </div>
                                             </div>
-                                            <div class="d-flex font-small justify-content-between align-items-center pb-3 font-weight-bold flex-column flex-md-row cursor-pointer">
+                                            <div className="d-flex font-small justify-content-between align-items-center pb-3 font-weight-bold flex-column flex-md-row cursor-pointer">
                                                 <div className="text-dark text-start font-weight-bold pb-1 pb-md-0">
                                                     <span>رمز عبور خود را فراموش کرده اید؟</span>
                                                 </div>
@@ -75,22 +86,20 @@ function Login() {
                                                     <span>بازیابی رمز عبور</span>
                                                 </div>
                                             </div>
-
                                             <div class="d-flex font-small justify-content-between align-items-center pb-4 font-weight-bold flex-column flex-md-row">
                                                 <div className="text-dark pb-1 pb-md-0 text-decoration-none"><span>قبلا ثبت نام نکرده اید؟</span></div>
                                                 <div className="cursor-pointer px-1 do"><a href="/signup" className="text-secondary text-decoration-none">ثبت نام رایگان</a></div>
                                             </div>
                                         </div>
-
                                     </div>
                                     </div>
                                 </div>
                             </div>
                         </section>
                     </div>
-                </main>
-            </main>
-        </div>
+                </main >
+            </main >
+        </div >
     </>
     );
 }
