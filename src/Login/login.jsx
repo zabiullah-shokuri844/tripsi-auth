@@ -24,7 +24,7 @@ function Login() {
             setError('success login')
         }
         else {
-            setError('Invalid email or password')
+            setError('Invalid email')
         }
     }
 

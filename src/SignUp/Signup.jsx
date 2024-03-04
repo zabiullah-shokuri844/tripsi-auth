@@ -25,12 +25,15 @@ function Signup() {
         }
         usersData.push(data)
         localStorage.setItem("users", JSON.stringify(usersData))
-        setFirstName('')
+        setFirstName("")
         setlastName('')
         setEmail('')
         setphone('')
         setpassword('')
     }
+
+
+
     return (
         <>
             <main className="bg-third-light min-vh-100 position-relative">
