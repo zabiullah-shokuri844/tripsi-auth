@@ -13,24 +13,24 @@ function Signup() {
     const [password, setpassword] = useState('')
 
 
-    function addUser(event) {
-        event.preventDefault()
-        let usersData = JSON.parse(localStorage.getItem("users")) || []
-        let data = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "phone": phone,
-            "email": Email,
-            "password": password
+        function addUser(event) {
+            event.preventDefault()
+            let usersData = JSON.parse(localStorage.getItem("users")) || []
+            let data = {
+                "firstName": firstName,
+                "lastName": lastName,
+                "phone": phone,
+                "email": Email,
+                "password": password
+            }
+            usersData.push(data)
+            localStorage.setItem("users", JSON.stringify(usersData))
+            setFirstName("")
+            setlastName('')
+            setEmail('')
+            setphone('')
+            setpassword('')
         }
-        usersData.push(data)
-        localStorage.setItem("users", JSON.stringify(usersData))
-        setFirstName("")
-        setlastName('')
-        setEmail('')
-        setphone('')
-        setpassword('')
-    }
 
 
 
