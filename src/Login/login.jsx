@@ -12,21 +12,21 @@ function Login() {
     const [password, setpassword] = useState('')
     const [error, setError] = useState('');
 
-    function handleLogin(e) {
-        e.preventDefault()
+                        function handleLogin(e) {
+                            e.preventDefault()
 
-        let usersData = JSON.parse(localStorage.getItem("users"))
+                            let usersData = JSON.parse(localStorage.getItem("users"))
 
-        let check = usersData.filter((item, index) => {
-            return item.email === email && item.password === password
-        })
-        if (check.length > 0) {
-            setError('success login')
-        }
-        else {
-            setError('Invalid email')
-        }
-    }
+                            let check = usersData.filter((item, index) => {
+                                return item.email === email && item.password === password
+                            })
+                            if (check.length > 0) {
+                                setError('success login')
+                            }
+                            else {
+                                setError('Invalid email')
+                            }
+                        }
 
     return (<>
         <div className="bg-third-light min-vh-100">
